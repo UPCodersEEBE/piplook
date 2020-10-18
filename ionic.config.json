@@ -1,0 +1,7 @@
+{
+  "name": "piplook",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
