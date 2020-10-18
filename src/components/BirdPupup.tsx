@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, withIonLifeCycle, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton } from '@ionic/react';
 import { pin, wifi, wine, warning, walk, card } from 'ionicons/icons';
+import mapimg from "../mapimg.png"
 
 
 const info = [
@@ -47,11 +48,11 @@ const id = window.location.pathname.toString().slice(6)
 
     return (
       <IonCard>
-        <button onClick={()=>setShow(false)}>Ok</button>
+        <IonButton onClick={()=>setShow(false)}>X</IonButton>
          {info.map((item,i) =>(<div>
         {item.name.toLowerCase() === name.toLowerCase()  && <><div><img alt = "Img Not Found" src={item.imgURL}/></div><div></div><h1>{item.name}</h1></>}</div>
       ))}
-      <IonButton>Map</IonButton>  
+      <img src={mapimg}></img>
       </IonCard>
     );
   };

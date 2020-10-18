@@ -61,7 +61,8 @@ class Capture extends Component {
 
   render() {
     return (
-      <div style={{ zIndex: "1000" }}>
+      <div style={{ zIndex: "1000", padding: "29px" }}>
+        {this.fileData()}
         <div>
           <label className="custom-file-upload">
             <input type="file" onChange={this.onFileChange} />
@@ -69,13 +70,12 @@ class Capture extends Component {
           <IonButton
             disabled={!this.state.selectedFile}
             onClick={this.onFileUpload}
-            style={{ width: "98.7%" }}
+            style={{ width: "98.7%", height: "80px" }}
           >
             Upload!
           </IonButton>
           {/* <GeolocationButton /> */}
         </div>
-        {this.fileData()}
       </div>
     );
   }
