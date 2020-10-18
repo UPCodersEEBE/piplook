@@ -1,6 +1,8 @@
+import { IonButton } from "@ionic/react";
 import axios from "axios";
-
 import React, { Component } from "react";
+import "./Page.css";
+import GeolocationButton from "../components/Geolocation";
 
 class Capture extends Component {
   state = {
@@ -21,7 +23,7 @@ class Capture extends Component {
 
     // Update the formData object
     formData.append(
-      "myFile",
+      "file",
       this.state.selectedFile,
       this.state.selectedFile.name
     );
@@ -31,7 +33,11 @@ class Capture extends Component {
 
     // Request made to the backend api
     // Send formData object
-    axios.post("https://piplook.herokuapp.com/bird_capture", formData);
+    axios
+      .post("https://piplook.herokuapp.com/bird_capture", formData)
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   // File content to be displayed after
@@ -62,11 +68,18 @@ class Capture extends Component {
   render() {
     return (
       <div style={{ zIndex: "1000" }}>
-        <h1>GeeksforGeeks</h1>
-        <h3>File Upload using React!</h3>
         <div>
-          <input type="file" onChange={this.onFileChange} />
-          <button onClick={this.onFileUpload}>Upload!</button>
+          <label className="custom-file-upload">
+            <input type="file" onChange={this.onFileChange} />
+          </label>
+          <IonButton
+            disabled={!this.state.selectedFile}
+            onClick={this.onFileUpload}
+            style={{ width: "98.7%" }}
+          >
+            Upload!
+          </IonButton>
+          <GeolocationButton />
         </div>
         {this.fileData()}
       </div>

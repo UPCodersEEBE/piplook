@@ -1,9 +1,7 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar,IonGrid, IonRow, IonCol } from '@ionic/react';
-import React from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
-import './Page.css';
-import BirdCard from '../components/BirdCard';
+import React, { useEffect } from "react";
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, withIonLifeCycle, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton } from '@ionic/react';
+import { pin, wifi, wine, warning, walk, card } from 'ionicons/icons';
+
 
 const info = [
   {
@@ -38,37 +36,25 @@ const info = [
   }
 ]
 
-const Library: React.FC = () => {
+interface CardProps {
+    name: string;
+    imgURL: string;
+    unlocked: boolean;
+  }
+const BirdDetails: React.FC<CardProps> = ({ name, imgURL, unlocked }) => {
+const id = window.location.pathname.toString().slice(6)
+ console.log(id)
 
-  const { name } = useParams<{ name: string; }>();
-
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Birds Library</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Library</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-      <IonGrid>
-      <div style={{display:"grid", gridTemplateColumns:"auto auto"}}>
-      {info.map((item,i) =>(
-        <BirdCard name={item.name} selfUrl={item.selfUrl} imgURL={item.imgURL} unlocked={item.unlocked} />
+    return (
+      <IonCard>
+        
+         {info.map((item,i) =>(<div>
+        {item.selfUrl === id  && <><div>{item.name}</div><div>{item.imgURL}</div><img alt = "Img Not Found" src={item.imgURL}/></>}</div>
       ))}
-      </div>
-      </IonGrid>
-      </IonContent>
-    </IonPage>
-  );
-};
-
-export default Library;
+        
+          </IonCard>
+    );
+  };
+  
+  export default BirdDetails;
+  

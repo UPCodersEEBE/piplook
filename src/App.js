@@ -26,6 +26,8 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import BirdDetails from "./pages/BirdDetails";
+import Map from "./pages/Map";
 
 const App = () => {
   return (
@@ -38,6 +40,8 @@ const App = () => {
             <Route path="/camera" component={Camera} />
             <Route path="/library" component={Library} />
             <Route path="/profile" component={Profile} />
+            <Route path="/bird/:name" component={BirdDetails} />
+            <Route path="/map" component={Map} />
             <Redirect from="/" to="/page/Inbox" exact />
           </IonRouterOutlet>
         </IonSplitPane>

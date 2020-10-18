@@ -30,7 +30,7 @@ const Capture = () => {
   return (
     <IonPage>
       <CaptureHelper />
-      {/* <IonHeader>
+       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton />
@@ -62,7 +62,7 @@ const Capture = () => {
           ></input>
         </label>
         <IonButton onClick={() => takePhoto()}></IonButton>
-      </IonContent> */}
+      </IonContent> 
     </IonPage>
   );
 };
