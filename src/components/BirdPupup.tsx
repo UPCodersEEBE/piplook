@@ -1,9 +1,7 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar,IonGrid, IonRow, IonCol } from '@ionic/react';
-import React from 'react';
-import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
-import './Page.css';
-import BirdCard from '../components/BirdCard';
+import React, { useEffect } from "react";
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, withIonLifeCycle, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton } from '@ionic/react';
+import { pin, wifi, wine, warning, walk, card } from 'ionicons/icons';
+
 
 const info = [
   {
@@ -38,37 +36,24 @@ const info = [
   }
 ]
 
-const Library: React.FC = () => {
+interface CardProps {
+    name: string;
+    setShow: Function;
 
-  const { name } = useParams<{ name: string; }>();
+  }
+const BirdDetails: React.FC<CardProps> = ({ name, setShow }) => {
+const id = window.location.pathname.toString().slice(6)
+ console.log(id)
 
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Birds Library</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
-      <IonContent fullscreen style={{background: "rgba(233, 146, 153, 0)", border: "none"}}>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Library</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-      <IonGrid>
-      <div style={{display:"grid", gridTemplateColumns:"auto auto"}}>
-      {info.map((item,i) =>(
-        <BirdCard name={item.name} selfUrl={item.selfUrl} imgURL={item.imgURL} unlocked={item.unlocked} />
+    return (
+      <IonCard>
+        <button onClick={()=>setShow(false)}>Ok</button>
+         {info.map((item,i) =>(<div>
+        {item.name.toLowerCase() === name.toLowerCase()  && <><div><img alt = "Img Not Found" src={item.imgURL}/></div><div></div><h1>{item.name}</h1></>}</div>
       ))}
-      </div>
-      </IonGrid>
-      </IonContent>
-    </IonPage>
-  );
-};
-
-export default Library;
+      <IonButton>Map</IonButton>  
+      </IonCard>
+    );
+  };
+  
+  export default BirdDetails;

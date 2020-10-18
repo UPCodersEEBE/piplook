@@ -29,7 +29,7 @@ const info = [
     name: "Hen", selfUrl:"hen",imgURL: "https://www.bhwt.org.uk/wp-content/uploads/2020/02/hen-examination-guidelines.jpg",unlocked: true
   },
   {
-    name: "Common Blackbird",selfUrl:"commonblackbird",imgURL: "https://lh3.googleusercontent.com/proxy/FIIxg1XYw44DmfT3-zgRDpJ8R6sE13xcq6u0jEH_4olLTzfILEjCnoa6tIwxI3zFLf90h3gZxE6lVGUvVeyh3RQrHRLwG5Lf_Z7B4UVe0fN8haxdRQKRfQ",unlocked: false
+    name: "Common Blackbird",selfUrl:"commonblackbird",imgURL: "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/44584641/1800",unlocked: false
   },
   {
     name: "Bald Eagle",selfUrl:"baldeagle", imgURL: "https://www.wkms.org/sites/wkms/files/styles/x_large/public/201911/1920px-a_banded_adult_bald_eagle__5657709617_.jpg",unlocked: false
@@ -49,10 +49,10 @@ const id = window.location.pathname.toString().slice(6)
       <IonCard>
         
          {info.map((item,i) =>(<div>
-        {item.selfUrl === id  && <><div>{item.name}</div><div>{item.imgURL}</div><img alt = "Img Not Found" src={item.imgURL}/></>}</div>
+        {item.selfUrl === id  && <><div><img alt = "Img Not Found" src={item.imgURL}/></div><div></div><h1>{item.name}</h1></>}</div>
       ))}
-        
-          </IonCard>
+      <IonButton>Map</IonButton>  
+      </IonCard>
     );
   };
   

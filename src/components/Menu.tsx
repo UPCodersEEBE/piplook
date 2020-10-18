@@ -35,12 +35,7 @@ const appPages: AppPage[] = [
     iosIcon: book,
     mdIcon: book
   },
-  {
-    title: 'Profile',
-    url: '/profile',
-    iosIcon: person,
-    mdIcon: person
-  }
+
 ];
 
 
@@ -49,14 +44,14 @@ const Menu: React.FC = () => {
 
   return (
     <IonMenu contentId="main" type="overlay">
-      <IonContent>
-        <IonList id="inbox-list">
+      <IonContent > <div >
+        <IonList className="degrade1"  id="inbox-list">
           <IonListHeader>Piplook</IonListHeader>
           <IonNote>Your favourite bird tracker</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+                <IonItem className={location.pathname === appPage.url ? 'selected' : 'unselected'} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
                   <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>
@@ -64,8 +59,8 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
-      <IonButton style={{textTransform: "none"}}>Log out</IonButton>
-      </IonContent>
+      
+      </div></IonContent>
     </IonMenu>
   );
 };

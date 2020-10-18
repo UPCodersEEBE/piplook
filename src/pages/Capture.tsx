@@ -20,6 +20,7 @@ import { FileChooser } from "@ionic-native/file-chooser/ngx";
 import CaptureHelper from "./CaptureHelper"
 
 const Capture = () => {
+
   const { photos, takePhoto } = usePhotoGallery();
   const [state, setState] = useState({
     photo: "",

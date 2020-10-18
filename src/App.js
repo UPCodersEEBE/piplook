@@ -42,7 +42,7 @@ const App = () => {
             <Route path="/profile" component={Profile} />
             <Route path="/bird/:name" component={BirdDetails} />
             <Route path="/map" component={Map} />
-            <Redirect from="/" to="/page/Inbox" exact />
+            <Redirect from="/" to="/library" exact />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

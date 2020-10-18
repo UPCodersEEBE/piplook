@@ -13,6 +13,7 @@ class Capture extends Component {
   // On file select (from the pop up)
   onFileChange = (event) => {
     // Update the state
+    console.log(this.props);
     this.setState({ selectedFile: event.target.files[0] });
   };
 
@@ -36,7 +37,8 @@ class Capture extends Component {
     axios
       .post("https://piplook.herokuapp.com/bird_capture", formData)
       .then((response) => {
-        console.log(response);
+        this.props.setShow(true);
+        this.props.setBirdName(response.data.labels[0].species);
       });
   };
 
@@ -44,22 +46,14 @@ class Capture extends Component {
   // file upload is complete
   fileData = () => {
     if (this.state.selectedFile) {
-      return (
-        <div style={{ zIndex: "1000" }}>
-          <h2>File Details:</h2>
-          <p>File Name: {this.state.selectedFile.name}</p>
-          <p>File Type: {this.state.selectedFile.type}</p>
-          <p>
-            Last Modified:
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p>
-        </div>
-      );
+      return <div style={{ zIndex: "1000" }}></div>;
     } else {
       return (
         <div style={{ zIndex: "1000" }}>
           <br />
-          <h4>Choose before Pressing the Upload button</h4>
+          <h4>
+            Select an image from your gallery or upload it from your camera.
+          </h4>
         </div>
       );
     }
@@ -79,7 +73,7 @@ class Capture extends Component {
           >
             Upload!
           </IonButton>
-          <GeolocationButton />
+          {/* <GeolocationButton /> */}
         </div>
         {this.fileData()}
       </div>

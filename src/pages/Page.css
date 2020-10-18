@@ -1,5 +1,8 @@
-/* input[type="file"] {
-  display: none;
+input[type="file"] {
+  background: none;
+  border: none;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .custom-file-upload {
   border: none;
@@ -8,6 +11,5 @@
   padding: 20px 20%;
   margin: auto auto;
   cursor: pointer;
-  background: #3880ff;
   border-radius: 10px;
-} */
+}
